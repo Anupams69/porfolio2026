@@ -1,26 +1,255 @@
 @import "tailwindcss";
 
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  color-scheme: dark;
+
+ 
+  --theme-duration: 1.2s;
+  --theme-ease: cubic-bezier(0.4, 0, 0.2, 1);
+
+  --background: #070708;
+  --foreground: #f4f4f5;
+  --text: #f4f4f5;
+  --muted: #a1a1aa;
+  --faint: #71717a;
+  --surface: #0c0c0e;
+  --surface-alt: #0d0d10;
+  --card: #111113;
+  --elevated: #18181b;
+  --border: #27272a;
+  --accent: #34d399;
+  --accent-muted: rgba(52, 211, 153, 0.12);
+  --accent-glow: rgba(52, 211, 153, 0.45);
+  --accent-foreground: #022c22;
+  --shadow-nav: 0 8px 32px rgba(0, 0, 0, 0.35);
+  --shadow-portrait: 0 24px 80px rgba(0, 0, 0, 0.5);
+  --ring-subtle: rgba(255, 255, 255, 0.1);
+  --noise-opacity: 0.035;
+  --nav-bg-scrolled: rgba(12, 12, 14, 0.86);
+  --hero-blob-secondary: rgba(99, 102, 241, 0.32);
+}
+
+html[data-theme="dark"] {
+  color-scheme: dark;
+}
+
+html[data-theme="light"] {
+  color-scheme: light;
+
+  --background: #fafaf9;
+  --foreground: #1c1917;
+  --text: #1c1917;
+  --muted: #44403c;
+  --faint: #78716c;
+  --surface: #f5f5f4;
+  --surface-alt: #efeeeb;
+  --card: #ffffff;
+  --elevated: #e7e5e4;
+  --border: #d6d3d1;
+  --accent: #047857;
+  --accent-muted: rgba(4, 120, 87, 0.12);
+  --accent-glow: rgba(4, 120, 87, 0.28);
+  --accent-foreground: #ffffff;
+  --shadow-nav: 0 8px 28px rgba(28, 25, 23, 0.1);
+  --shadow-portrait: 0 20px 56px rgba(28, 25, 23, 0.14);
+  --ring-subtle: rgba(0, 0, 0, 0.07);
+  --noise-opacity: 0.028;
+  --nav-bg-scrolled: rgba(250, 250, 249, 0.9);
+  --hero-blob-secondary: rgba(79, 70, 229, 0.14);
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-manrope);
+  --font-mono: var(--font-jetbrains);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+.font-display {
+  font-family: var(--font-syne), ui-sans-serif, system-ui, sans-serif;
+}
+
+
+@property --background {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #070708;
+}
+
+@property --foreground {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #f4f4f5;
+}
+
+@property --surface-alt {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #0d0d10;
+}
+
+@property --card {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #111113;
+}
+
+@property --elevated {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #18181b;
+}
+
+@property --border {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #27272a;
+}
+
+@property --text {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #f4f4f5;
+}
+
+@property --muted {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #a1a1aa;
+}
+
+@property --faint {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #71717a;
+}
+
+@property --accent {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #34d399;
+}
+
+html {
+  scroll-behavior: smooth;
+  background-color: var(--background);
+  transition: background-color var(--theme-duration) var(--theme-ease);
 }
 
 body {
-  background: var(--background);
+  background-color: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-manrope), system-ui, sans-serif;
+  transition:
+    background-color var(--theme-duration) var(--theme-ease),
+    color var(--theme-duration) var(--theme-ease);
+}
+
+
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: var(--theme-duration);
+  animation-timing-function: var(--theme-ease);
+}
+
+::view-transition-old(root) {
+  z-index: 1;
+}
+
+::view-transition-new(root) {
+  z-index: 2;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    animation-duration: 1ms !important;
+  }
+
+  html,
+  body,
+  main,
+  section,
+  article,
+  header,
+  footer,
+  nav {
+    transition-duration: 1ms !important;
+  }
+}
+
+
+main,
+section,
+article,
+header,
+footer,
+nav {
+  transition:
+    background-color var(--theme-duration) var(--theme-ease),
+    border-color var(--theme-duration) var(--theme-ease),
+    color var(--theme-duration) var(--theme-ease),
+    box-shadow var(--theme-duration) var(--theme-ease);
+}
+
+body::before {
+  content: "";
+  pointer-events: none;
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  opacity: var(--noise-opacity);
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  transition: opacity var(--theme-duration) var(--theme-ease);
+}
+
+body::after {
+  content: none;
+}
+
+
+@keyframes sky-twinkle {
+  from {
+    opacity: 0.58;
+  }
+
+  to {
+    opacity: 0.92;
+  }
+}
+
+html[data-theme="dark"] main section,
+html[data-theme="dark"] footer {
+  position: relative;
+}
+
+html[data-theme="dark"] main section::before,
+html[data-theme="dark"] footer::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image: url("/starfield.svg");
+  background-repeat: repeat;
+  background-position: 0 0;
+  opacity: 0.82;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  animation: sky-twinkle 7.5s ease-in-out infinite alternate;
+}
+
+html[data-theme="dark"] main section:not(#top) > *,
+html[data-theme="dark"] footer > * {
+  position: relative;
+  z-index: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html[data-theme="dark"] main section::before,
+  html[data-theme="dark"] footer::before {
+    animation: none;
+    opacity: 0.78;
+  }
 }
