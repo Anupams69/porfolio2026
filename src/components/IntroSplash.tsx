@@ -72,7 +72,7 @@ export function IntroSplash() {
           Anupam Shrivastava&apos;s portfolio
         </h1>
         <p className="mx-auto mt-8 max-w-md text-sm text-[var(--muted)]">
-          Full Stack Developer · Bengaluru
+          Software Developer <br/>ElasticDevs,Bengaluru
         </p>
       </div>
     </div>

@@ -28,8 +28,8 @@ export function Hero() {
 
       <div className="relative mx-auto grid max-w-6xl grid-cols-1 items-center gap-12 lg:grid-cols-[1fr_minmax(220px,320px)] lg:gap-16">
         <div className="order-2 min-w-0 lg:order-1">
-          <p className="mb-4 font-mono text-sm tracking-widest text-[var(--accent)] uppercase">
-            Full Stack Developer
+          <p className="mb-4 font-mono text-sm tracking-widest text-[var(--accent)] ">
+            Software Developer
           </p>
           <h1 className="font-display max-w-4xl text-4xl leading-[1.1] font-semibold tracking-tight text-[var(--text)] sm:text-6xl sm:leading-[1.05]">
             {profile.name}

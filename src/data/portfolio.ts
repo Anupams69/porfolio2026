@@ -1,6 +1,6 @@
 export const profile = {
   name: "Anupam Shrivastava",
-  title: "Full Stack Developer",
+  title: "Software Developer",
   email: "jaishrivastava0111@gmail.com",
   phone: "+91 81098 37757",
   location: "Bengaluru, India",
@@ -21,10 +21,10 @@ export const experience = [
     ],
   },
   {
-    role: "Full Stack Developer",
+    // role: "Full Stack Developer",
     company: "Redacto",
-    period: "2024 – Jan 2025",
-    location: "Bengaluru",
+    // period: "2024 – Jan 2025",
+    // location: "Bengaluru",
     highlights: [
       "Contributed to the Redacto compliance platform, developing a Breach Management system aligned with project compliance standards.",
       "Developed a Next.js application using Server-Side Rendering (SSR) for high performance and secure data handling.",
@@ -33,10 +33,10 @@ export const experience = [
     ],
   },
   {
-    role: "Full Stack Developer",
+    // role: "Full Stack Developer",
     company: "Mokobara (E-commerce Platform)",
-    period: "Contract",
-    location: "Remote",
+    // period: "Contract",
+    // location: "Remote",
     highlights: [
       "Developed a Returns Management System in Next.js with complete frontend development and API integration.",
       "Built workflows for returns and refunds based on conditions like 30-day trial period and warranty period.",
@@ -45,10 +45,10 @@ export const experience = [
     ],
   },
   {
-    role: "Full Stack Developer",
+    // role: "Full Stack Developer",
     company: "AppAlly",
-    period: "Contract",
-    location: "Remote",
+    // period: "Contract",
+    // location: "Remote",
     highlights: [
       "Developed and optimized the frontend UI in Next.js with responsive, user-friendly design for students applying to U.S. colleges.",
       "Integrated REST APIs for smooth data flow between frontend and backend.",
@@ -58,10 +58,10 @@ export const experience = [
     ],
   },
   {
-    role: "Full Stack Developer",
+    // role: "Full Stack Developer",
     company: "Flytest (Flytest.ai)",
-    period: "Contract",
-    location: "Remote",
+    // period: "Contract",
+    // location: "Remote",
     highlights: [
       "Contributed to both frontend and backend development, improving usability and performance.",
       "Designed and integrated APIs to support test automation workflows.",
